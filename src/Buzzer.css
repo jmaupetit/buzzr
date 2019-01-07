@@ -1,0 +1,17 @@
+.Buzzer img {
+  animation: image-spin infinite 10s linear;
+}
+
+.Buzzer-pressed img {
+  filter: blur(3px);
+  animation: none;
+}
+
+@keyframes image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
