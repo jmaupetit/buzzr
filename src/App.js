@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Buzzer from "./Buzzer";
+import buzzrSound from "./buzzr.mp3";
+import easterEggSound from "./easter-egg.mp3";
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +19,8 @@ class App extends Component {
       this.setState({ isBuzzing: true });
       const url =
         Math.floor(Math.random() * Math.floor(10)) % 3 === 0
-          ? "https://www.myinstants.com/media/sounds/wrong-answer-sound-effect.mp3"
-          : "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-21014/zapsplat_cartoon_fart_037_21629.mp3";
+          ? buzzrSound
+          : easterEggSound;
       const buzzer = new Audio(url);
       buzzer.play().then(() => {
         setTimeout(() => {
