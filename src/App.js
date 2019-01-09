@@ -16,9 +16,7 @@ class App extends Component {
   buzz() {
     this.setState({ isBuzzing: true });
     const url =
-      Math.floor(Math.random() * Math.floor(10)) % 3 === 0
-        ? buzzrSound
-        : easterEggSound;
+      window.location.hash === "#easter" ? easterEggSound : buzzrSound;
     const buzzer = new Audio(url);
     buzzer.play().then(() => {
       setTimeout(() => {
