@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/buzzr/static/media/easter-egg.7da44188.mp3"
   },
   {
-    "revision": "2a94b6f1018492608c29da573ec5d227",
+    "revision": "a09fe0eb5db9e09e21ce2189238342fb",
     "url": "/buzzr/index.html"
   }
 ];
