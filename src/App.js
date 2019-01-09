@@ -36,8 +36,8 @@ class App extends Component {
     // We only consider the first detected GamePad
     var gp = navigator.getGamepads()[0];
 
-    // Any pressed button can buzz
-    if (gp.buttons.some(btn => btn.pressed)) {
+    // Any pressed button can buzz but only if we are not already buzzing
+    if (gp.buttons.some(btn => btn.pressed) && !this.state.isBuzzing) {
       this.buzz();
     }
 
