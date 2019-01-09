@@ -56,7 +56,7 @@ class App extends Component {
 
     window.addEventListener("gamepaddisconnected", () => {
       console.log("GamePad disconnected");
-      window.cancelRequestAnimationFrame(this.start);
+      window.cancelAnimationFrame(this.start);
     });
   }
 
