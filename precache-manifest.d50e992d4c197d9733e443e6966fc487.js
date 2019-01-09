@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "725a3ead27e8395e878f",
-    "url": "/buzzr/static/css/main.4e6ec666.chunk.css"
+    "revision": "3684188aabe75cf79f45",
+    "url": "/buzzr/static/css/main.7cba6a8d.chunk.css"
   },
   {
-    "revision": "725a3ead27e8395e878f",
-    "url": "/buzzr/static/js/main.725a3ead.chunk.js"
+    "revision": "3684188aabe75cf79f45",
+    "url": "/buzzr/static/js/main.3684188a.chunk.js"
   },
   {
     "revision": "41c610859bbbe909d349",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/buzzr/static/media/easter-egg.7da44188.mp3"
   },
   {
-    "revision": "d0aab7c501a63ccd56ad8fc2071e0496",
+    "revision": "2a94b6f1018492608c29da573ec5d227",
     "url": "/buzzr/index.html"
   }
 ];
