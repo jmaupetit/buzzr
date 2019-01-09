@@ -8,34 +8,64 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { isBuzzing: false };
-    this.buzz = this.buzz.bind(this);
+    this.keyboardBuzz = this.keyboardBuzz.bind(this);
+    this.gamepadBuzz = this.gamepadBuzz.bind(this);
+    this.start = null;
   }
 
-  // Inspired from:
-  // https://github.com/facebook/react/issues/285#issuecomment-373931454
-  buzz(event) {
+  buzz() {
+    this.setState({ isBuzzing: true });
+    const url =
+      Math.floor(Math.random() * Math.floor(10)) % 3 === 0
+        ? buzzrSound
+        : easterEggSound;
+    const buzzer = new Audio(url);
+    buzzer.play().then(() => {
+      setTimeout(() => {
+        this.setState({ isBuzzing: false });
+      }, 2000);
+    });
+  }
+
+  keyboardBuzz(event) {
     event.stopPropagation();
     if ("Space" === event.code) {
-      this.setState({ isBuzzing: true });
-      const url =
-        Math.floor(Math.random() * Math.floor(10)) % 3 === 0
-          ? buzzrSound
-          : easterEggSound;
-      const buzzer = new Audio(url);
-      buzzer.play().then(() => {
-        setTimeout(() => {
-          this.setState({ isBuzzing: false });
-        }, 2000);
-      });
+      this.buzz();
     }
   }
 
+  gamepadBuzz() {
+    // We only consider the first detected GamePad
+    var gp = navigator.getGamepads()[0];
+
+    // Any pressed button can buzz
+    if (gp.buttons.some(btn => btn.pressed)) {
+      this.buzz();
+    }
+
+    // This is the game loop
+    this.start = window.requestAnimationFrame(this.gamepadBuzz);
+  }
+
   componentDidMount() {
-    document.addEventListener("keydown", this.buzz);
+    document.addEventListener("keydown", this.keyboardBuzz);
+
+    window.addEventListener("gamepadconnected", () => {
+      var gamepad = navigator.getGamepads()[0];
+      console.log(`Gamepad connected at index ${gamepad.index}: ${gamepad.id}`);
+      this.gamepadBuzz();
+    });
+
+    window.addEventListener("gamepaddisconnected", () => {
+      console.log("GamePad disconnected");
+      window.cancelRequestAnimationFrame(this.start);
+    });
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.buzz);
+    document.removeEventListener("keydown");
+    window.removeEventListener("gamepadconnected");
+    window.removeEventListener("gamepaddisconnected");
   }
 
   render() {
@@ -43,7 +73,7 @@ class App extends Component {
       <div className={this.state.isBuzzing ? "App App-buzzing" : "App"}>
         <Buzzer isBuzzing={this.state.isBuzzing} />
         <p>
-          Hit <kbd>space</kbd> to buzz!
+          Hit <kbd>space</kbd> or a 🎮 to buzz!
         </p>
       </div>
     );
