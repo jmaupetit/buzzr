@@ -2,9 +2,8 @@
   animation: image-spin infinite 10s linear;
 }
 
-.Buzzer-pressed img {
-  filter: blur(3px);
-  animation: none;
+.Buzzer img.pressed {
+  animation: image-scale infinite 0.2s linear;
 }
 
 @keyframes image-spin {
@@ -13,5 +12,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes image-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }

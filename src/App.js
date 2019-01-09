@@ -21,7 +21,7 @@ class App extends Component {
     buzzer.play().then(() => {
       setTimeout(() => {
         this.setState({ isBuzzing: false });
-      }, 2000);
+      }, 1000);
     });
   }
 

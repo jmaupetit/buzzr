@@ -3,8 +3,8 @@ import "./Buzzer.css";
 import cog from "./icon-cog.svg";
 
 const Buzzer = props => (
-  <div className={props.isBuzzing ? "Buzzer-pressed" : "Buzzer"}>
-    <img src={cog} alt="Cog" />
+  <div className="Buzzer">
+    <img src={cog} alt="Cog" className={props.isBuzzing ? "pressed" : ""} />
   </div>
 );
 
