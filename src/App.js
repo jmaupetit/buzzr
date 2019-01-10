@@ -8,12 +8,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { isBuzzing: false };
-    this.keyboardBuzz = this.keyboardBuzz.bind(this);
-    this.gamepadBuzz = this.gamepadBuzz.bind(this);
     this.start = null;
   }
 
-  buzz() {
+  buzz = () => {
     this.setState({ isBuzzing: true });
     const url =
       window.location.hash === "#easter" ? easterEggSound : buzzrSound;
@@ -23,16 +21,16 @@ class App extends Component {
         this.setState({ isBuzzing: false });
       }, 1000);
     });
-  }
+  };
 
-  keyboardBuzz(event) {
+  keyboardBuzz = event => {
     event.stopPropagation();
     if ("Space" === event.code) {
       this.buzz();
     }
-  }
+  };
 
-  gamepadBuzz() {
+  gamepadBuzz = () => {
     // We only consider the first detected GamePad
     var gp = navigator.getGamepads()[0];
 
@@ -43,9 +41,9 @@ class App extends Component {
 
     // This is the game loop
     this.start = window.requestAnimationFrame(this.gamepadBuzz);
-  }
+  };
 
-  componentDidMount() {
+  componentDidMount = () => {
     document.addEventListener("keydown", this.keyboardBuzz);
 
     window.addEventListener("gamepadconnected", () => {
@@ -58,15 +56,15 @@ class App extends Component {
       console.log("GamePad disconnected");
       window.cancelAnimationFrame(this.start);
     });
-  }
+  };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     document.removeEventListener("keydown");
     window.removeEventListener("gamepadconnected");
     window.removeEventListener("gamepaddisconnected");
-  }
+  };
 
-  render() {
+  render = () => {
     return (
       <div className={this.state.isBuzzing ? "App App-buzzing" : "App"}>
         <Buzzer isBuzzing={this.state.isBuzzing} />
@@ -75,7 +73,7 @@ class App extends Component {
         </p>
       </div>
     );
-  }
+  };
 }
 
 export default App;
