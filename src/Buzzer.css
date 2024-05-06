@@ -6,6 +6,11 @@
   animation: image-scale infinite 0.2s linear;
 }
 
+.Buzzer .team {
+  font-size: 6rem;
+  font-weight: bold;
+}
+
 @keyframes image-spin {
   from {
     transform: rotate(0deg);
