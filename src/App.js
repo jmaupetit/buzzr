@@ -4,6 +4,8 @@ import Buzzer from "./Buzzer";
 import buzzrSound from "./buzzr.mp3";
 import easterEggSound from "./easter-egg.mp3";
 
+const teamsIcons = ["🍌", "🍎", "🍋", "🍍", "🍇"];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ class App extends Component {
   }
 
   buzz = (team) => {
-    this.setState({ isBuzzing: true, team: team });
+    this.setState({ isBuzzing: true, team: teamsIcons[team] });
     const url = window.location.hash === "#easter"
       ? easterEggSound
       : buzzrSound;
