@@ -7,14 +7,15 @@ import easterEggSound from "./easter-egg.mp3";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isBuzzing: false };
+    this.state = { isBuzzing: false, team: null };
     this.start = null;
   }
 
-  buzz = () => {
-    this.setState({ isBuzzing: true });
-    const url =
-      window.location.hash === "#easter" ? easterEggSound : buzzrSound;
+  buzz = (team) => {
+    this.setState({ isBuzzing: true, team: team });
+    const url = window.location.hash === "#easter"
+      ? easterEggSound
+      : buzzrSound;
     const buzzer = new Audio(url);
     buzzer.play().then(() => {
       setTimeout(() => {
@@ -23,33 +24,30 @@ class App extends Component {
     });
   };
 
-  keyboardBuzz = event => {
+  keyboardBuzz = (event) => {
     event.stopPropagation();
     if ("Space" === event.code) {
       this.buzz();
     }
   };
 
-  gamepadBuzz = () => {
-    // We only consider the first detected GamePad
-    var gp = navigator.getGamepads()[0];
-
+  gamepadBuzz = (gamepad) => {
     // Any pressed button can buzz but only if we are not already buzzing
-    if (gp.buttons.some(btn => btn.pressed) && !this.state.isBuzzing) {
-      this.buzz();
+    if (gamepad.buttons.some((btn) => btn.pressed) && !this.state.isBuzzing) {
+      this.buzz(gamepad.index);
     }
 
     // This is the game loop
-    this.start = window.requestAnimationFrame(this.gamepadBuzz);
+    this.start = window.requestAnimationFrame(() => this.gamepadBuzz(gamepad));
   };
 
   componentDidMount = () => {
     document.addEventListener("keydown", this.keyboardBuzz);
 
-    window.addEventListener("gamepadconnected", () => {
-      var gamepad = navigator.getGamepads()[0];
-      console.log(`Gamepad connected at index ${gamepad.index}: ${gamepad.id}`);
-      this.gamepadBuzz();
+    window.addEventListener("gamepadconnected", (event) => {
+      const gamepad = event.gamepad;
+      console.log("Gamepad connected", gamepad);
+      this.gamepadBuzz(gamepad);
     });
 
     window.addEventListener("gamepaddisconnected", () => {
@@ -67,7 +65,7 @@ class App extends Component {
   render = () => {
     return (
       <div className={this.state.isBuzzing ? "App App-buzzing" : "App"}>
-        <Buzzer isBuzzing={this.state.isBuzzing} />
+        <Buzzer isBuzzing={this.state.isBuzzing} team={this.state.team} />
         <p>
           Hit <kbd>space</kbd> or a 🎮 to buzz!
         </p>
