@@ -1,16 +1,16 @@
 {
-  "main.css": "/buzzr/static/css/main.7cba6a8d.chunk.css",
-  "main.js": "/buzzr/static/js/main.3684188a.chunk.js",
-  "main.js.map": "/buzzr/static/js/main.3684188a.chunk.js.map",
-  "static/js/1.41c61085.chunk.js": "/buzzr/static/js/1.41c61085.chunk.js",
-  "static/js/1.41c61085.chunk.js.map": "/buzzr/static/js/1.41c61085.chunk.js.map",
-  "runtime~main.js": "/buzzr/static/js/runtime~main.00837ccd.js",
-  "runtime~main.js.map": "/buzzr/static/js/runtime~main.00837ccd.js.map",
-  "static/media/icon-cog.svg": "/buzzr/static/media/icon-cog.2117e8e6.svg",
-  "static/media/buzzr.mp3": "/buzzr/static/media/buzzr.093eed4f.mp3",
-  "static/media/easter-egg.mp3": "/buzzr/static/media/easter-egg.7da44188.mp3",
-  "static/css/main.7cba6a8d.chunk.css.map": "/buzzr/static/css/main.7cba6a8d.chunk.css.map",
-  "index.html": "/buzzr/index.html",
-  "precache-manifest.d4337264a5562c6423978c11a5b532f6.js": "/buzzr/precache-manifest.d4337264a5562c6423978c11a5b532f6.js",
-  "service-worker.js": "/buzzr/service-worker.js"
+  "files": {
+    "main.css": "/buzzr/static/css/main.594f6ac3.css",
+    "main.js": "/buzzr/static/js/main.d122cb5b.js",
+    "static/media/buzzr.mp3": "/buzzr/static/media/buzzr.493cc9f458f4882b9951.mp3",
+    "static/media/easter-egg.mp3": "/buzzr/static/media/easter-egg.a7ce499f55ccdbb41f90.mp3",
+    "static/media/icon-cog.svg": "/buzzr/static/media/icon-cog.217607c2ba87ceb1d04fcdaa303d76f3.svg",
+    "index.html": "/buzzr/index.html",
+    "main.594f6ac3.css.map": "/buzzr/static/css/main.594f6ac3.css.map",
+    "main.d122cb5b.js.map": "/buzzr/static/js/main.d122cb5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.594f6ac3.css",
+    "static/js/main.d122cb5b.js"
+  ]
 }
